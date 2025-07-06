@@ -28,7 +28,9 @@ class MetricsManager:
             if name == 'accuracy_macro':
                 self.metrics[name] = Accuracy(task=self.task_type, num_classes=num_classes, average='macro').to(device)
             elif name == 'accuracy_weighted':
-                self.metrics[name] = Accuracy(task=self.task_type, num_classes=num_classes, average='weighted').to(device)
+                self.metrics[name] = Accuracy(task=self.task_type, num_classes=num_classes, average='weighted').to(device)            
+            elif name == 'accuracy_micro':
+                self.metrics[name] = Accuracy(task=self.task_type, num_classes=num_classes, average='micro').to(device)
             elif name == 'accuracy_per_class':
                 self.metrics[name] = Accuracy(task=self.task_type, num_classes=num_classes, average=None).to(device)
             elif name == 'f1':

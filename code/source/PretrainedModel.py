@@ -26,8 +26,8 @@ from code.source.config.images import ImageNormalization, ImageTrim
 
 class PretrainedConfig:
     BATCH_SIZE = 20
-    MAX_EPOCHS = 30#60
-    MAX_PATIENCE = 10#20
+    MAX_EPOCHS = 60
+    MAX_PATIENCE = 20
     PATIENCE = max(int(round(MAX_EPOCHS/3)), MAX_PATIENCE)
     LEARNING_RATE = 0.0001
     IMG_SIZE = ImageTrim().resize(4.5)
@@ -458,7 +458,7 @@ class PretrainedModel(Module):
         avg_loss = running_loss / len(loader)
 
        
-        metrics_to_use = ['accuracy_macro','accuracy_weighted','accuracy_per_class','f1','auroc','precision','recall','specificity']
+        metrics_to_use = ['accuracy_macro','accuracy_weighted','accuracy_micro','accuracy_per_class','f1','auroc','precision','recall','specificity']
         metrics_manager = MetricsManager(metrics_to_use, self.num_classes, self.device)
 
         probs = get_probs(all_scores, self.num_classes)

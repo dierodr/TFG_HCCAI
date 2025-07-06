@@ -808,7 +808,8 @@ class CustomCNN(Module):
 
         # Block: Metric initialization
         
-        metrics_to_use = ["accuracy_macro", "accuracy_weighted", "accuracy_per_class", "f1", "auroc"]
+        metrics_to_use = ['accuracy_macro','accuracy_weighted','accuracy_micro','accuracy_per_class','f1','auroc','precision','recall','specificity']
+
         metrics_manager = MetricsManager(metrics_to_use, num_classes, device)
 
         self.eval()  # Set to evaluation mode
@@ -1066,7 +1067,7 @@ def main_loop(
 
 
 
-def get_hyperparameters(grayscale: bool, img_mean: [float], img_std: [float], max_epochs: int = 5, **overrides) -> dict:
+def get_hyperparameters(grayscale: bool, img_mean: [float], img_std: [float], max_epochs: int = 150, **overrides) -> dict:
     """
     Generate a dictionary of training hyperparameters, with logic to adapt 
     image normalization based on B-mode (grayscale) or Doppler (RGB) input. Additional 

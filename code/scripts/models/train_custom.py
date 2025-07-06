@@ -10,7 +10,7 @@ from pprint import pprint
 from code.source.config.categories import DatasetMode
 from code.source.CustomCNN import get_hyperparameters, main_loop
 from code.source.LiverImg import LiverImg
-
+from datetime import datetime
 
 import argparse
 
@@ -43,8 +43,6 @@ def main(dataset_mode):
     dataset_class = LiverImg
 
 
-    # CUSTOM NORM
-    # GRAY SIMPLE NORM
     norm_stats=ImageNormalization.SIMPLE_GRAY
     hyperparameters = get_hyperparameters(grayscale=True,img_mean=norm_stats[0],img_std=norm_stats[1])
     print(f"\n--- HYPERPARAMETERS ---")
@@ -63,18 +61,10 @@ def main(dataset_mode):
 
 
 
-
-
-
-
-
-
-
-
 if __name__ == '__main__':
-    
+    print(datetime.now())
+ 
     args = parse_args()
-
     if args.mode == ALL:
         modes = DatasetMode.all()
     else:
