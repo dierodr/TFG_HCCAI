@@ -1,0 +1,59 @@
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore Jupyter Notebook checkpoints
+**/.ipynb_checkpoints/
+
+
+# Ignore virtual environment
+tfg/
+
+# Ignore environment files
+.env
+
+# Ignore image files 
+*.png
+*.jpg
+*.JPG
+*.jpeg
+*.gif
+*.bmp
+*.tiff
+*.svg
+
+# Ignore video files 
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.flv
+*.wmv
+*.webm
+*.m4v
+
+# Ignore log files
+events.out.ftevents*.*
+logs/**/events.out.tfevents.*
+*.db
+*.tfevents.*
+logs/
+results/
+*.csv
+*.pth 
+
+# Ignore VS Code settings
+.vscode/
+
+#Ignore some project folders
+documents/
+diagrams/
+bilbiografia/
+**/unused/
+
+
+#But dont ignore
+!.gitkeep
+

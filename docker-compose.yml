@@ -1,0 +1,35 @@
+services:
+  streamlit:
+    image: liver-cnn-app:mycnn
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./data/model_state/cirrhotic_state/:/hccai/data/model_state/cirrhotic_state/
+      - ./data/model_state/healthy_livers_or_not/:/hccai/data/model_state/healthy_livers_or_not/
+      - ./data/model_state/organ_classification/:/hccai/data/model_state/organ_classification/
+
+    expose:
+      - 8501
+    networks:
+      - hccnet
+    restart: always
+
+  nginx:
+    image: nginx:latest
+    container_name: hcc-nginx
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./nginx/certs/:/etc/nginx/certs/
+     
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - streamlit
+    networks:
+      - hccnet
+
+networks:
+  hccnet:
+    driver: bridge
