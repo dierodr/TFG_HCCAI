@@ -41,7 +41,8 @@ logs/**/events.out.tfevents.*
 *.tfevents.*
 logs/
 results/
-*.csv
+#*.csv
+#Models are too heavy for git
 *.pth 
 
 # Ignore VS Code settings
